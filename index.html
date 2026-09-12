@@ -3,20 +3,111 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="the.pixel.squad — Photography">
+  <meta name="description" content="the.pixel.squad — a visual journal of oceans, sunsets, city nights and quiet places.">
+  <meta name="theme-color" content="#0b0b0b">
   <title>the.pixel.squad — Photography</title>
   <style>
-    * { box-sizing: border-box; }
-    body { margin: 0; min-height: 100vh; display: grid; place-items: center; font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; background: #111; color: #fff; }
-    main { text-align: center; padding: 2rem; }
-    h1 { margin: 0 0 .75rem; font-size: clamp(2.5rem, 8vw, 5rem); }
-    p { margin: 0; color: #bbb; font-size: 1.1rem; }
+    :root { --bg:#0b0b0b; --text:#f5f5f2; --muted:#a5a5a0; --line:#292929; }
+    * { box-sizing:border-box; }
+    html { scroll-behavior:smooth; }
+    body { margin:0; background:var(--bg); color:var(--text); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.5; }
+    a { color:inherit; text-decoration:none; }
+    .wrap { width:min(1180px,92vw); margin:auto; }
+    header { position:sticky; top:0; z-index:10; background:rgba(11,11,11,.82); backdrop-filter:blur(14px); border-bottom:1px solid rgba(255,255,255,.07); }
+    nav { height:72px; display:flex; align-items:center; justify-content:space-between; }
+    .brand { font-size:15px; font-weight:700; letter-spacing:.12em; text-transform:lowercase; }
+    nav a { color:#cfcfca; font-size:13px; margin-left:28px; }
+    nav a:hover { color:#fff; }
+    .hero { min-height:78vh; display:grid; place-items:center; text-align:center; padding:90px 0 70px; }
+    .eyebrow { color:#aaa; text-transform:uppercase; letter-spacing:.24em; font-size:11px; margin-bottom:20px; }
+    h1 { margin:0; font-family:Georgia,serif; font-size:clamp(4rem,12vw,9rem); font-weight:400; letter-spacing:-.055em; line-height:.88; }
+    .hero p { max-width:570px; margin:30px auto 0; color:#b7b7b2; font-size:17px; }
+    .button { display:inline-block; margin-top:30px; padding:13px 21px; border:1px solid #555; border-radius:999px; font-size:13px; transition:.2s; }
+    .button:hover { background:#fff; color:#111; border-color:#fff; }
+    section { padding:80px 0; }
+    .section-head { display:flex; justify-content:space-between; align-items:end; gap:30px; margin-bottom:30px; }
+    .section-head h2 { margin:0; font-family:Georgia,serif; font-size:38px; font-weight:400; }
+    .section-head p { margin:0; color:var(--muted); font-size:13px; }
+    .grid { display:grid; grid-template-columns:repeat(12,1fr); gap:14px; }
+    figure { margin:0; position:relative; overflow:hidden; background:#161616; border-radius:3px; }
+    figure:nth-child(1) { grid-column:span 7; }
+    figure:nth-child(2) { grid-column:span 5; }
+    figure:nth-child(3) { grid-column:span 4; }
+    figure:nth-child(4) { grid-column:span 8; }
+    figure:nth-child(5) { grid-column:span 6; }
+    figure:nth-child(6) { grid-column:span 6; }
+    img { display:block; width:100%; height:100%; min-height:320px; object-fit:cover; filter:saturate(.9); transition:transform .6s ease,filter .6s ease; }
+    figure:hover img { transform:scale(1.035); filter:saturate(1.05); }
+    figcaption { position:absolute; left:18px; bottom:16px; font-size:12px; letter-spacing:.08em; text-transform:uppercase; text-shadow:0 2px 12px #000; }
+    .about { border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+    .about-inner { max-width:760px; }
+    .about h2 { font-family:Georgia,serif; font-size:42px; font-weight:400; margin:0 0 20px; }
+    .about p { color:#b7b7b2; font-size:17px; }
+    footer { padding:45px 0 55px; color:#777; font-size:12px; display:flex; justify-content:space-between; gap:20px; }
+    @media(max-width:700px) {
+      nav { height:62px; }
+      nav a { margin-left:14px; }
+      .hero { min-height:70vh; padding:70px 0; }
+      .section-head { display:block; }
+      .section-head p { margin-top:8px; }
+      figure:nth-child(n) { grid-column:span 12; }
+      img { min-height:280px; }
+      .about h2 { font-size:34px; }
+      footer { display:block; }
+      footer span { display:block; margin-top:8px; }
+    }
   </style>
 </head>
 <body>
-  <main>
-    <h1>the.pixel.squad</h1>
-    <p>Photography website coming soon.</p>
+  <header>
+    <div class="wrap">
+      <nav>
+        <a class="brand" href="#top">the.pixel.squad</a>
+        <div><a href="#work">Work</a><a href="#about">About</a></div>
+      </nav>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="wrap">
+        <div class="eyebrow">Photography · Visual Journal</div>
+        <h1>Moments,<br>made still.</h1>
+        <p>A quiet collection of photographs — ocean light, fading sunsets, city evenings and the small details worth remembering.</p>
+        <a class="button" href="#work">Explore the work ↓</a>
+      </div>
+    </section>
+
+    <section id="work">
+      <div class="wrap">
+        <div class="section-head">
+          <h2>Selected frames</h2>
+          <p>06 photographs · 01 visual story</p>
+        </div>
+        <div class="grid">
+          <figure><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=85" alt="Ocean meeting the horizon at sunset" loading="eager"><figcaption>Ocean / Horizon</figcaption></figure>
+          <figure><img src="https://images.unsplash.com/photo-1495567720989-cebdbdd97913?auto=format&fit=crop&w=1200&q=85" alt="Warm sunset over a landscape" loading="lazy"><figcaption>Golden hour</figcaption></figure>
+          <figure><img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=85" alt="City skyline at dusk" loading="lazy"><figcaption>City / Dusk</figcaption></figure>
+          <figure><img src="https://images.unsplash.com/photo-1470214304380-aadaedcfff1b?auto=format&fit=crop&w=1400&q=85" alt="Mountain landscape under open sky" loading="lazy"><figcaption>Quiet places</figcaption></figure>
+          <figure><img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1200&q=85" alt="Mountain lake and reflection" loading="lazy"><figcaption>Reflections</figcaption></figure>
+          <figure><img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1200&q=85" alt="Architectural detail and geometric lines" loading="lazy"><figcaption>Architecture</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <section id="about" class="about">
+      <div class="wrap">
+        <div class="about-inner">
+          <h2>For the moments that don't need words.</h2>
+          <p>the.pixel.squad is a photography space built around atmosphere, light and honest frames. From coastlines to concrete, the goal is simple: notice the scene, slow down, and keep the feeling.</p>
+        </div>
+      </div>
+    </section>
   </main>
+
+  <footer class="wrap">
+    <strong>the.pixel.squad</strong>
+    <span>Photography · © 2026</span>
+  </footer>
 </body>
 </html>
