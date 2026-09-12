@@ -1,113 +1,280 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="the.pixel.squad — a visual journal of oceans, sunsets, city nights and quiet places.">
-  <meta name="theme-color" content="#0b0b0b">
-  <title>the.pixel.squad — Photography</title>
-  <style>
-    :root { --bg:#0b0b0b; --text:#f5f5f2; --muted:#a5a5a0; --line:#292929; }
-    * { box-sizing:border-box; }
-    html { scroll-behavior:smooth; }
-    body { margin:0; background:var(--bg); color:var(--text); font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif; line-height:1.5; }
-    a { color:inherit; text-decoration:none; }
-    .wrap { width:min(1180px,92vw); margin:auto; }
-    header { position:sticky; top:0; z-index:10; background:rgba(11,11,11,.82); backdrop-filter:blur(14px); border-bottom:1px solid rgba(255,255,255,.07); }
-    nav { height:72px; display:flex; align-items:center; justify-content:space-between; }
-    .brand { font-size:15px; font-weight:700; letter-spacing:.12em; text-transform:lowercase; }
-    nav a { color:#cfcfca; font-size:13px; margin-left:28px; }
-    nav a:hover { color:#fff; }
-    .hero { min-height:78vh; display:grid; place-items:center; text-align:center; padding:90px 0 70px; }
-    .eyebrow { color:#aaa; text-transform:uppercase; letter-spacing:.24em; font-size:11px; margin-bottom:20px; }
-    h1 { margin:0; font-family:Georgia,serif; font-size:clamp(4rem,12vw,9rem); font-weight:400; letter-spacing:-.055em; line-height:.88; }
-    .hero p { max-width:570px; margin:30px auto 0; color:#b7b7b2; font-size:17px; }
-    .button { display:inline-block; margin-top:30px; padding:13px 21px; border:1px solid #555; border-radius:999px; font-size:13px; transition:.2s; }
-    .button:hover { background:#fff; color:#111; border-color:#fff; }
-    section { padding:80px 0; }
-    .section-head { display:flex; justify-content:space-between; align-items:end; gap:30px; margin-bottom:30px; }
-    .section-head h2 { margin:0; font-family:Georgia,serif; font-size:38px; font-weight:400; }
-    .section-head p { margin:0; color:var(--muted); font-size:13px; }
-    .grid { display:grid; grid-template-columns:repeat(12,1fr); gap:14px; }
-    figure { margin:0; position:relative; overflow:hidden; background:#161616; border-radius:3px; }
-    figure:nth-child(1) { grid-column:span 7; }
-    figure:nth-child(2) { grid-column:span 5; }
-    figure:nth-child(3) { grid-column:span 4; }
-    figure:nth-child(4) { grid-column:span 8; }
-    figure:nth-child(5) { grid-column:span 6; }
-    figure:nth-child(6) { grid-column:span 6; }
-    img { display:block; width:100%; height:100%; min-height:320px; object-fit:cover; filter:saturate(.9); transition:transform .6s ease,filter .6s ease; }
-    figure:hover img { transform:scale(1.035); filter:saturate(1.05); }
-    figcaption { position:absolute; left:18px; bottom:16px; font-size:12px; letter-spacing:.08em; text-transform:uppercase; text-shadow:0 2px 12px #000; }
-    .about { border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
-    .about-inner { max-width:760px; }
-    .about h2 { font-family:Georgia,serif; font-size:42px; font-weight:400; margin:0 0 20px; }
-    .about p { color:#b7b7b2; font-size:17px; }
-    footer { padding:45px 0 55px; color:#777; font-size:12px; display:flex; justify-content:space-between; gap:20px; }
-    @media(max-width:700px) {
-      nav { height:62px; }
-      nav a { margin-left:14px; }
-      .hero { min-height:70vh; padding:70px 0; }
-      .section-head { display:block; }
-      .section-head p { margin-top:8px; }
-      figure:nth-child(n) { grid-column:span 12; }
-      img { min-height:280px; }
-      .about h2 { font-size:34px; }
-      footer { display:block; }
-      footer span { display:block; margin-top:8px; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="the.pixel.squad — a visual journal of oceans, sunsets, city nights and quiet places.">
+<meta name="theme-color" content="#0b0b0b">
+<title>the.pixel.squad — Photography</title>
+<style>
+  :root{
+    --bg: #0b0b0b;
+    --bg-raised: #131313;
+    --line: #262626;
+    --ink: #ededea;
+    --ink-dim: #9a9a95;
+    --accent: #d8c9a3;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family: "Iowan Old Style","Georgia","Times New Roman",serif;
+    line-height:1.5;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:inherit;}
+  img{max-width:100%; display:block;}
+
+  .wrap{
+    max-width:1180px;
+    margin:0 auto;
+    padding:0 28px;
+  }
+
+  /* ---- Header ---- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(11,11,11,.82);
+    backdrop-filter:blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:20px 28px;
+    max-width:1180px; margin:0 auto;
+  }
+  .brand{
+    font-size:15px; letter-spacing:.02em;
+    text-decoration:none;
+  }
+  .navlinks{
+    display:flex; gap:28px;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:13px;
+  }
+  .navlinks a{ text-decoration:none; color:var(--ink-dim); }
+  .navlinks a:hover{ color:var(--ink); }
+
+  /* ---- Hero ---- */
+  .hero{
+    padding:120px 0 90px;
+  }
+  .kicker{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:13px;
+    color:var(--ink-dim);
+    margin:0 0 18px;
+  }
+  h1.display{
+    font-weight:400;
+    font-size:clamp(40px, 7vw, 84px);
+    line-height:1.04;
+    margin:0 0 28px;
+    max-width:14ch;
+  }
+  .lede{
+    max-width:46ch;
+    color:var(--ink-dim);
+    font-size:18px;
+    margin:0 0 40px;
+  }
+  .cta{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    display:inline-block;
+    text-decoration:none;
+    font-size:13px;
+    letter-spacing:.02em;
+    border-bottom:1px solid var(--ink);
+    padding-bottom:4px;
+  }
+
+  /* ---- Section labels ---- */
+  .section-head{
+    display:flex; align-items:baseline; justify-content:space-between;
+    border-top:1px solid var(--line);
+    padding:60px 0 34px;
+    gap:24px;
+    flex-wrap:wrap;
+  }
+  .section-head h2{
+    font-weight:400;
+    font-size:clamp(26px,3.4vw,36px);
+    margin:0;
+  }
+  .section-head .meta{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:13px;
+    color:var(--ink-dim);
+  }
+
+  /* ---- Gallery ---- */
+  .gallery{
+    display:grid;
+    grid-template-columns:repeat(12,1fr);
+    gap:22px;
+    padding-bottom:20px;
+  }
+  figure{ margin:0; }
+  figure img{
+    width:100%; height:100%;
+    object-fit:cover;
+    border-radius:2px;
+  }
+  figcaption{
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:12.5px;
+    color:var(--ink-dim);
+    margin-top:10px;
+    font-style:italic;
+  }
+
+  .g-wide   { grid-column: span 8; aspect-ratio: 3/2; }
+  .g-narrow { grid-column: span 4; aspect-ratio: 3/4; }
+  .g-half   { grid-column: span 6; aspect-ratio: 4/5; }
+  .g-third  { grid-column: span 4; aspect-ratio: 4/5; }
+  .g-wideflat{ grid-column: span 12; aspect-ratio: 16/7; }
+
+  @media (max-width: 860px){
+    .g-wide, .g-narrow, .g-half, .g-third, .g-wideflat{
+      grid-column: span 12;
+      aspect-ratio: 4/5;
     }
-  </style>
+  }
+
+  /* ---- Closing statement ---- */
+  .statement{
+    border-top:1px solid var(--line);
+    padding:90px 0;
+  }
+  .statement p{
+    max-width:56ch;
+    font-size:clamp(20px,2.6vw,28px);
+    line-height:1.5;
+    color:var(--ink);
+  }
+
+  footer{
+    border-top:1px solid var(--line);
+    padding:34px 0 50px;
+    font-family:"Helvetica Neue",Arial,sans-serif;
+    font-size:12.5px;
+    color:var(--ink-dim);
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;
+  }
+</style>
 </head>
 <body>
-  <header>
-    <div class="wrap">
-      <nav>
-        <a class="brand" href="#top">the.pixel.squad</a>
-        <div><a href="#work">Work</a><a href="#about">About</a></div>
-      </nav>
+
+<header>
+  <nav class="nav">
+    <a class="brand" href="#top">the.pixel.squad</a>
+    <div class="navlinks">
+      <a href="#work">Work</a>
+      <a href="#about">About</a>
     </div>
-  </header>
+  </nav>
+</header>
 
-  <main id="top">
-    <section class="hero">
-      <div class="wrap">
-        <div class="eyebrow">Photography · Visual Journal</div>
-        <h1>Moments,<br>made still.</h1>
-        <p>A quiet collection of photographs — ocean light, fading sunsets, city evenings and the small details worth remembering.</p>
-        <a class="button" href="#work">Explore the work ↓</a>
-      </div>
-    </section>
+<main class="wrap" id="top">
 
-    <section id="work">
-      <div class="wrap">
-        <div class="section-head">
-          <h2>Selected frames</h2>
-          <p>06 photographs · 01 visual story</p>
-        </div>
-        <div class="grid">
-          <figure><img src="https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=1400&q=85" alt="Ocean meeting the horizon at sunset" loading="eager"><figcaption>Ocean / Horizon</figcaption></figure>
-          <figure><img src="https://images.unsplash.com/photo-1495567720989-cebdbdd97913?auto=format&fit=crop&w=1200&q=85" alt="Warm sunset over a landscape" loading="lazy"><figcaption>Golden hour</figcaption></figure>
-          <figure><img src="https://images.unsplash.com/photo-1519501025264-65ba15a82390?auto=format&fit=crop&w=1200&q=85" alt="City skyline at dusk" loading="lazy"><figcaption>City / Dusk</figcaption></figure>
-          <figure><img src="https://images.unsplash.com/photo-1470214304380-aadaedcfff1b?auto=format&fit=crop&w=1400&q=85" alt="Mountain landscape under open sky" loading="lazy"><figcaption>Quiet places</figcaption></figure>
-          <figure><img src="https://images.unsplash.com/photo-1470770841072-f978cf4d019e?auto=format&fit=crop&w=1200&q=85" alt="Mountain lake and reflection" loading="lazy"><figcaption>Reflections</figcaption></figure>
-          <figure><img src="https://images.unsplash.com/photo-1518005020951-eccb494ad742?auto=format&fit=crop&w=1200&q=85" alt="Architectural detail and geometric lines" loading="lazy"><figcaption>Architecture</figcaption></figure>
-        </div>
-      </div>
-    </section>
+  <section class="hero">
+    <p class="kicker">Photography · Visual Journal</p>
+    <h1 class="display">Moments,<br>made still.</h1>
+    <p class="lede">A quiet collection of photographs — ocean light, fading sunsets, city evenings and the small details worth remembering.</p>
+    <a class="cta" href="#work">Explore the work ↓</a>
+  </section>
 
-    <section id="about" class="about">
-      <div class="wrap">
-        <div class="about-inner">
-          <h2>For the moments that don't need words.</h2>
-          <p>the.pixel.squad is a photography space built around atmosphere, light and honest frames. From coastlines to concrete, the goal is simple: notice the scene, slow down, and keep the feeling.</p>
-        </div>
-      </div>
-    </section>
-  </main>
+  <section id="work">
+    <div class="section-head">
+      <h2>Selected frames</h2>
+      <span class="meta">15 photographs</span>
+    </div>
 
-  <footer class="wrap">
-    <strong>the.pixel.squad</strong>
-    <span>Photography · © 2026</span>
-  </footer>
+    <div class="gallery">
+
+      <figure class="g-wide">
+        <img src="images/city-02.jpg" alt="City skyline at dusk with a rider crossing a quiet street">
+        <figcaption>City / Dusk</figcaption>
+      </figure>
+      <figure class="g-narrow">
+        <img src="images/city-01.jpg" alt="Empty walkway between buildings, lit by street lamps at night">
+        <figcaption>Night / Empty street</figcaption>
+      </figure>
+
+      <figure class="g-third">
+        <img src="images/golden-01.jpg" alt="Sunset silhouette behind a half-built structure">
+        <figcaption>Golden hour / Rooftop</figcaption>
+      </figure>
+      <figure class="g-third">
+        <img src="images/golden-02.jpg" alt="Sun setting behind distant hills over a city skyline">
+        <figcaption>Golden hour / Skyline</figcaption>
+      </figure>
+      <figure class="g-third">
+        <img src="images/city-03.jpg" alt="Birds crossing a deep blue dusk sky above silhouetted trees">
+        <figcaption>Dusk / Birds overhead</figcaption>
+      </figure>
+
+      <figure class="g-half">
+        <img src="images/ocean-01.jpg" alt="Waves rolling in under a pink and grey evening sky">
+        <figcaption>Ocean / Horizon</figcaption>
+      </figure>
+      <figure class="g-half">
+        <img src="images/ocean-02.jpg" alt="Ocean waves at dusk with soft coloured light in the clouds">
+        <figcaption>Ocean / Low tide</figcaption>
+      </figure>
+
+      <figure class="g-narrow">
+        <img src="images/temple-day.jpg" alt="Ornate temple tower against a clear blue sky">
+        <figcaption>Architecture / Temple gopuram</figcaption>
+      </figure>
+      <figure class="g-narrow">
+        <img src="images/temple-night.jpg" alt="The same temple tower lit blue against a night sky">
+        <figcaption>Architecture / Same tower, after dark</figcaption>
+      </figure>
+      <figure class="g-narrow">
+        <img src="images/memorial-night.jpg" alt="A grand domed memorial building lit up at night">
+        <figcaption>Architecture / Memorial at night</figcaption>
+      </figure>
+
+      <figure class="g-wideflat">
+        <img src="images/darjeeling.jpg" alt="Layered green hills under a blue sky, framed by tree branches">
+        <figcaption>Quiet places / Hill station, West Bengal</figcaption>
+      </figure>
+
+      <figure class="g-half">
+        <img src="images/cave.jpg" alt="Looking out from inside a dark cave toward daylight and trees">
+        <figcaption>Quiet places / Cave mouth</figcaption>
+      </figure>
+      <figure class="g-half">
+        <img src="images/sky-clouds.jpg" alt="A dramatic sky full of clouds above a silhouetted streetlamp">
+        <figcaption>Quiet places / Cloud study</figcaption>
+      </figure>
+
+      <figure class="g-narrow">
+        <img src="images/hills-01.jpg" alt="View of distant hills and a hazy city skyline from a rooftop">
+        <figcaption>Quiet places / Rooftop view</figcaption>
+      </figure>
+      <figure class="g-wide">
+        <img src="images/wing.jpg" alt="Aeroplane wing above a thick layer of clouds">
+        <figcaption>From above / Somewhere over the clouds</figcaption>
+      </figure>
+
+    </div>
+  </section>
+
+  <section id="about" class="statement">
+    <p>the.pixel.squad is a photography space built around atmosphere, light and honest frames. From coastlines to concrete, the goal is simple: notice the scene, slow down, and keep the feeling.</p>
+  </section>
+
+</main>
+
+<footer class="wrap">
+  <span><strong>the.pixel.squad</strong> Photography</span>
+  <span>© 2026</span>
+</footer>
+
 </body>
 </html>
